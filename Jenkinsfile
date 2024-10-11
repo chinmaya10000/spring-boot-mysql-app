@@ -42,7 +42,7 @@ pipeline {
                     def dockerComposeCmd = 'docker-compose up -d'
                     
                     sshagent(['ec2-server-key']) {
-                        sh "scp docker-compose.yml ubuntu@52.15.242.81:/home/ubuntu"
+                        sh "scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@52.15.242.81:/home/ubuntu"
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@52.15.242.81 '${dockerComposeCmd}'"
                     }
                 }
