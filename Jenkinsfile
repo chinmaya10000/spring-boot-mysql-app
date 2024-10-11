@@ -24,5 +24,16 @@ pipeline{
                 }
             }
         }
+        stage('build and push') {
+            steps {
+                script {
+                    echo 'Build and push image'
+                    withDockerRegistry(credentialsId: '	docker-creds', toolName: 'docker') {
+                        sh 'docker build -t chinmayapradhan/spring-boot-mysql-app:1.0 .'
+                        sh 'docker push chinmayapradhan/spring-boot-mysql-app:1.0'
+                    }
+                }
+            }
+        }
     }
 }
