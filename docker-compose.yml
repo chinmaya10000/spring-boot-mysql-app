@@ -1,7 +1,7 @@
 version: "3"
 services:
   application:
-    image: spring-boot-mysql-app
+    image: chinmayapradhan/spring-boot-mysql-app:1.0
     ports:
       - "8080:8080"
     networks:
